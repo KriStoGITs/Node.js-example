@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <title>Sveicienu lietotne</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Sveicienu lietotne</h1>
+  <p>Ievadi savu vārdu:</p>
+
+  <input id="vards">
+  <button onclick="sveicinat()">Sveicināt</button>
+
+  <p id="rezultats"></p>
+
+  <script>
+    async function sveicinat() {
+      const vards = document.getElementById('vards').value;
+
+      try {
+        const atbilde = await fetch('/api/sveiciens?vards=' + encodeURIComponent(vards));
+        if (!atbilde.ok) {
+          throw new Error('Servera kļūda');
+        }
+
+        const dati = await atbilde.json();
+        document.getElementById('rezultats').innerText = dati.zina;
+
+      } catch (kluda) {
+        document.getElementById('rezultats').innerText = 'Kļūda!';
+      }
+    }
+  </script>
+
+</body>
+</html>
