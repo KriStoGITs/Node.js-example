@@ -1,2 +1,2 @@
-# Node.js-Present-cijas-uzdevums.
+# Node.js Presentācijas uzdevums.
 Prezentācijas node.js mazs mājaslapas piemērs.
